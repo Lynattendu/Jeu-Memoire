@@ -1,1 +1,878 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Jeu de mémoire : trouver les paires ou réaliser la suite la plus longue."
+  >
+
+  <title>Jeu Mémoire</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       BARRE DU HAUT
+  ====================================================== -->
+
+  <header class="top-bar">
+
+    <button
+      id="homeBtn"
+      class="icon-btn hidden"
+      type="button"
+      aria-label="Retour à l'accueil"
+    >
+      ⌂
+    </button>
+
+    <div class="top-title">
+      JEU MÉMOIRE
+    </div>
+
+    <button
+      id="soundBtn"
+      class="icon-btn"
+      type="button"
+      aria-label="Activer ou désactiver le son"
+    >
+      🔊
+    </button>
+
+  </header>
+
+
+
+  <main class="app">
+
+
+    <!-- =====================================================
+         ÉCRAN 1 — ACCUEIL
+    ====================================================== -->
+
+    <section
+      id="screenHome"
+      class="screen active"
+    >
+
+      <div class="hero">
+
+        <p class="eyebrow">
+          TESTE TA MÉMOIRE
+        </p>
+
+        <h1>
+          Jusqu'où<br>
+          te souviendras-tu ?
+        </h1>
+
+        <p class="hero-text">
+          Deux défis.
+          Deux façons de tester ta mémoire.
+        </p>
+
+      </div>
+
+
+      <div class="mode-grid">
+
+
+        <!-- MODE PAIRES -->
+
+        <button
+          id="choosePairsBtn"
+          class="mode-card"
+          type="button"
+        >
+
+          <span class="mode-icon">
+            🃏
+          </span>
+
+          <span class="mode-name">
+            Trouver les paires
+          </span>
+
+          <span class="mode-description">
+            Mémorise les 12 cartes puis retrouve les 6 paires avant la fin du temps.
+          </span>
+
+          <span class="mode-arrow">
+            →
+          </span>
+
+        </button>
+
+
+
+        <!-- MODE SUITE -->
+
+        <button
+          id="chooseSequenceBtn"
+          class="mode-card"
+          type="button"
+        >
+
+          <span class="mode-icon">
+            🧠
+          </span>
+
+          <span class="mode-name">
+            La suite la plus longue
+          </span>
+
+          <span class="mode-description">
+            Observe une suite de cartes puis reproduis-la dans le bon ordre.
+          </span>
+
+          <span class="mode-arrow">
+            →
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+      <div class="records-home">
+
+        <div class="record-home-card">
+
+          <span>
+            Meilleur temps
+          </span>
+
+          <strong id="homePairsRecord">
+            --
+          </strong>
+
+        </div>
+
+
+        <div class="record-home-card">
+
+          <span>
+            Meilleure suite
+          </span>
+
+          <strong id="homeSequenceRecord">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ÉCRAN 2 — CHOIX NIVEAU PAIRES
+    ====================================================== -->
+
+    <section
+      id="screenPairsLevels"
+      class="screen"
+    >
+
+      <div class="screen-heading">
+
+        <p class="eyebrow">
+          TROUVER LES PAIRES
+        </p>
+
+        <h2>
+          Choisis ton niveau
+        </h2>
+
+        <p>
+          Tu verras d'abord les 12 cartes.
+          Mémorise leur position avant qu'elles se retournent.
+        </p>
+
+      </div>
+
+
+      <div class="levels-list">
+
+
+        <!-- NIVEAU 1 -->
+
+        <button
+          class="level-card"
+          data-level="easy"
+          type="button"
+        >
+
+          <span class="level-number">
+            01
+          </span>
+
+          <span class="level-content">
+
+            <strong>
+              Mémoire tranquille
+            </strong>
+
+            <span>
+              Mémorisation : 15 secondes
+            </span>
+
+            <span>
+              Temps de jeu : 90 secondes
+            </span>
+
+          </span>
+
+          <span class="level-stars">
+            ★☆☆
+          </span>
+
+        </button>
+
+
+
+        <!-- NIVEAU 2 -->
+
+        <button
+          class="level-card"
+          data-level="medium"
+          type="button"
+        >
+
+          <span class="level-number">
+            02
+          </span>
+
+          <span class="level-content">
+
+            <strong>
+              Mémoire rapide
+            </strong>
+
+            <span>
+              Mémorisation : 10 secondes
+            </span>
+
+            <span>
+              Temps de jeu : 60 secondes
+            </span>
+
+          </span>
+
+          <span class="level-stars">
+            ★★☆
+          </span>
+
+        </button>
+
+
+
+        <!-- NIVEAU 3 -->
+
+        <button
+          class="level-card"
+          data-level="hard"
+          type="button"
+        >
+
+          <span class="level-number">
+            03
+          </span>
+
+          <span class="level-content">
+
+            <strong>
+              Mémoire flash
+            </strong>
+
+            <span>
+              Mémorisation : 5 secondes
+            </span>
+
+            <span>
+              Temps de jeu : 40 secondes
+            </span>
+
+          </span>
+
+          <span class="level-stars">
+            ★★★
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+      <button
+        class="secondary-btn"
+        data-back-home
+        type="button"
+      >
+        ← Retour
+      </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ÉCRAN 3 — JEU DES PAIRES
+    ====================================================== -->
+
+    <section
+      id="screenPairsGame"
+      class="screen"
+    >
+
+
+      <!-- INFORMATIONS -->
+
+      <div class="game-info">
+
+
+        <div class="game-stat">
+
+          <span class="stat-label">
+            Temps
+          </span>
+
+          <strong
+            id="pairsTimer"
+            class="stat-value"
+          >
+            00:00
+          </strong>
+
+        </div>
+
+
+        <div class="game-stat">
+
+          <span class="stat-label">
+            Paires
+          </span>
+
+          <strong
+            id="pairsFound"
+            class="stat-value"
+          >
+            0 / 6
+          </strong>
+
+        </div>
+
+
+        <div class="game-stat">
+
+          <span class="stat-label">
+            Niveau
+          </span>
+
+          <strong
+            id="pairsLevelName"
+            class="stat-value small"
+          >
+            --
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- MESSAGE PHASE -->
+
+      <div
+        id="pairsMessage"
+        class="game-message"
+      >
+        Mémorise les cartes
+      </div>
+
+
+
+      <!-- COMPTE À REBOURS MÉMORISATION -->
+
+      <div
+        id="memoryCountdown"
+        class="memory-countdown"
+      >
+        15
+      </div>
+
+
+
+      <!-- PLATEAU DES 12 CARTES -->
+
+      <div
+        id="pairsBoard"
+        class="cards-grid"
+      >
+
+        <!--
+          Les 12 cartes seront générées automatiquement
+          avec JavaScript.
+        -->
+
+      </div>
+
+
+
+      <div class="game-actions">
+
+        <button
+          id="restartPairsBtn"
+          class="secondary-btn"
+          type="button"
+        >
+          Recommencer
+        </button>
+
+        <button
+          class="secondary-btn"
+          data-back-home
+          type="button"
+        >
+          Accueil
+        </button>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ÉCRAN 4 — PRÉSENTATION MODE SUITE
+    ====================================================== -->
+
+    <section
+      id="screenSequenceIntro"
+      class="screen"
+    >
+
+      <div class="screen-heading">
+
+        <p class="eyebrow">
+          LA SUITE LA PLUS LONGUE
+        </p>
+
+        <h2>
+          Observe.
+          Mémorise.
+          Reproduis.
+        </h2>
+
+        <p>
+          Le jeu commence avec 3 cartes.
+          Observe leur ordre puis clique sur les cartes
+          dans exactement le même ordre.
+        </p>
+
+      </div>
+
+
+      <div class="sequence-example">
+
+        <div class="example-card">
+          1
+        </div>
+
+        <div class="example-arrow">
+          →
+        </div>
+
+        <div class="example-card">
+          2
+        </div>
+
+        <div class="example-arrow">
+          →
+        </div>
+
+        <div class="example-card">
+          3
+        </div>
+
+        <div class="example-arrow">
+          →
+        </div>
+
+        <div class="example-card add">
+          +1
+        </div>
+
+      </div>
+
+
+      <div class="sequence-rules">
+
+        <p>
+          ✓ Réussis la suite
+        </p>
+
+        <p>
+          ✓ Une carte supplémentaire est ajoutée
+        </p>
+
+        <p>
+          ✓ Continue jusqu'à ta première erreur
+        </p>
+
+      </div>
+
+
+      <button
+        id="startSequenceBtn"
+        class="primary-btn"
+        type="button"
+      >
+        Commencer
+      </button>
+
+
+      <button
+        class="secondary-btn"
+        data-back-home
+        type="button"
+      >
+        ← Retour
+      </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ÉCRAN 5 — JEU SUITE
+    ====================================================== -->
+
+    <section
+      id="screenSequenceGame"
+      class="screen"
+    >
+
+
+      <div class="game-info">
+
+
+        <div class="game-stat">
+
+          <span class="stat-label">
+            Suite
+          </span>
+
+          <strong
+            id="sequenceLength"
+            class="stat-value"
+          >
+            3
+          </strong>
+
+        </div>
+
+
+        <div class="game-stat">
+
+          <span class="stat-label">
+            Record
+          </span>
+
+          <strong
+            id="sequenceBest"
+            class="stat-value"
+          >
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="game-stat">
+
+          <span class="stat-label">
+            Manche
+          </span>
+
+          <strong
+            id="sequenceRound"
+            class="stat-value"
+          >
+            1
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="sequenceMessage"
+        class="game-message"
+      >
+        Observe la suite
+      </div>
+
+
+
+      <!-- INDICATEUR VISUEL -->
+
+      <div
+        id="sequenceProgress"
+        class="sequence-progress"
+      >
+        0 / 3
+      </div>
+
+
+
+      <!-- PLATEAU SUITE -->
+
+      <div
+        id="sequenceBoard"
+        class="sequence-grid"
+      >
+
+        <!--
+          Les cartes disponibles seront générées
+          automatiquement avec JavaScript.
+        -->
+
+      </div>
+
+
+
+      <div class="game-actions">
+
+        <button
+          id="restartSequenceBtn"
+          class="secondary-btn"
+          type="button"
+        >
+          Recommencer
+        </button>
+
+        <button
+          class="secondary-btn"
+          data-back-home
+          type="button"
+        >
+          Accueil
+        </button>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ÉCRAN 6 — RÉSULTAT PAIRES
+    ====================================================== -->
+
+    <section
+      id="screenPairsResult"
+      class="screen result-screen"
+    >
+
+      <div
+        id="pairsResultIcon"
+        class="result-icon"
+      >
+        🏆
+      </div>
+
+      <p class="eyebrow">
+        TROUVER LES PAIRES
+      </p>
+
+      <h2 id="pairsResultTitle">
+        Bravo !
+      </h2>
+
+      <p
+        id="pairsResultText"
+        class="result-text"
+      >
+        Tu as retrouvé toutes les paires.
+      </p>
+
+
+      <div class="result-score">
+
+        <span>
+          Temps
+        </span>
+
+        <strong id="pairsResultTime">
+          00:00
+        </strong>
+
+      </div>
+
+
+      <div class="result-score">
+
+        <span>
+          Paires trouvées
+        </span>
+
+        <strong id="pairsResultPairs">
+          6 / 6
+        </strong>
+
+      </div>
+
+
+      <button
+        id="playPairsAgainBtn"
+        class="primary-btn"
+        type="button"
+      >
+        Rejouer
+      </button>
+
+
+      <button
+        id="changePairsLevelBtn"
+        class="secondary-btn"
+        type="button"
+      >
+        Changer de niveau
+      </button>
+
+
+      <button
+        class="secondary-btn"
+        data-back-home
+        type="button"
+      >
+        Accueil
+      </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ÉCRAN 7 — RÉSULTAT SUITE
+    ====================================================== -->
+
+    <section
+      id="screenSequenceResult"
+      class="screen result-screen"
+    >
+
+      <div class="result-icon">
+        🧠
+      </div>
+
+      <p class="eyebrow">
+        LA SUITE LA PLUS LONGUE
+      </p>
+
+      <h2>
+        Fin de la partie
+      </h2>
+
+      <p class="result-text">
+        Jusqu'où ta mémoire t'a-t-elle emmené ?
+      </p>
+
+
+      <div class="big-result">
+
+        <span>
+          Suite maximale
+        </span>
+
+        <strong id="sequenceResultScore">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="result-score">
+
+        <span>
+          Record
+        </span>
+
+        <strong id="sequenceResultBest">
+          0
+        </strong>
+
+      </div>
+
+
+      <button
+        id="playSequenceAgainBtn"
+        class="primary-btn"
+        type="button"
+      >
+        Rejouer
+      </button>
+
+
+      <button
+        class="secondary-btn"
+        data-back-home
+        type="button"
+      >
+        Accueil
+      </button>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       PETITE NOTIFICATION
+  ====================================================== -->
+
+  <div
+    id="toast"
+    class="toast"
+    aria-live="polite"
+  >
+  </div>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
