@@ -841,6 +841,7 @@ h2 {
 .memory-card {
   position: relative;
 
+   display: block;
   width: 100%;
 
   aspect-ratio: 3 / 4;
